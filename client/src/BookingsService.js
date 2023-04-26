@@ -27,3 +27,20 @@ export const deleteBooking = (id) => {
 }
 
 // add update booking
+export const updateBooking = (id, payload) => {
+    console.log("updateBooking triggered")
+    console.log(`id: ${id}`)
+    console.log(`payload: ${payload} and it contains ${payload.checkedIn}`)
+    return fetch(baseURL + id, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
+    .then(data => {
+      return {
+        ...data, // { _id: <> }
+        ...payload // { name: <> }
+      }
+    })
+}
