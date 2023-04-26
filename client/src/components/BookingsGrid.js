@@ -5,7 +5,7 @@ const BookingsGrid = ( { bookings }) => {
 
     const renderBookings = bookings.map(bk => {
         return(
-            <Booking key = {bk.id} booking = {bk} />
+            <Booking key = {bk._id} booking = {bk} />
         )
     })
 
