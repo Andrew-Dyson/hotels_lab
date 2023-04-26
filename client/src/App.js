@@ -6,13 +6,13 @@ import './App.css';
 function App() {
   return (
     <AppBox>
-      <Hotelbox></Hotelbox>
+      <HotelBox></HotelBox>
     </AppBox>
   );
 }
 
 export const AppBox = styled.div`
-background-color: red;
+background-color: rgba(255,0,0,0.5);
 `
 
 export default App;
