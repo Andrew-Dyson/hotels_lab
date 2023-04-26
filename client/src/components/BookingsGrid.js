@@ -1,17 +1,20 @@
 import Booking from "./Booking"
 
-const BookingsGrid = () => {
+const BookingsGrid = ( { bookings }) => {
 
 
-
-
+    const renderBookings = bookings.map(bk => {
+        return(
+            <Booking key = {bk.id} booking = {bk} />
+        )
+    })
 
     return (
         <>
 
             <h3>Booking grid</h3>
-            <Booking></Booking>
-            <Booking></Booking>
+            <p> There are {bookings.length} bookings</p>
+            {renderBookings}
         </>
     )
 }
