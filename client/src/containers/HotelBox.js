@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 import BookingsGrid from "../components/BookingsGrid"
 import BookingForm from "../components/BookingForm"
-import { getBookings, postBooking} from "../BookingsService"
+import { getBookings, postBooking, updateBooking, deleteBooking} from "../BookingsService"
 
 
 const HotelBox = () => {
@@ -27,12 +27,41 @@ const HotelBox = () => {
         })       
     }
 
+    const manageCheckinStatusChange = (id, payload) => {
+        updateBooking(
+            id,
+            payload
+        )
+
+        const revisedBookings = bookings.map(booking => {
+            if (booking._id === id) {
+                booking.checkedIn = !booking.checkedIn
+            } 
+            return booking
+        })
+
+        console.log(revisedBookings)
+    
+        setBookings(revisedBookings)
+        
+
+    }
+
+    const manageDelete = (id) => {
+        console.log(`manageDelete triggered with id ${id}`)
+        deleteBooking(id)
+
+        const newBookings = bookings.filter(b => b._id != id)
+        setBookings(newBookings)
+    }
+    
+
 
 return (
     <>
     <h2> This is a hotelbox </h2>
     {bookings.length >= 1 && <BookingForm onGuestBookinSubmit={handleNewBooking}/> }
-    {bookings.length >= 1 && <BookingsGrid bookings={bookings}/>}
+    {bookings.length >= 1 && <BookingsGrid bookings={bookings} manageCheckinStatusChange={manageCheckinStatusChange} manageDelete = {manageDelete} />}
     </> 
 )
 
