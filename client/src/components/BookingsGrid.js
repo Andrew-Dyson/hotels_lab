@@ -1,11 +1,11 @@
 import Booking from "./Booking"
 
-const BookingsGrid = ( { bookings, manageCheckinStatusChange }) => {
+const BookingsGrid = ( { bookings, manageCheckinStatusChange, manageDelete }) => {
 
 
     const renderBookings = bookings.map(bk => {
         return(
-            <Booking key = {bk._id} booking = {bk} manageCheckinStatusChange={manageCheckinStatusChange}/>
+            <Booking key = {bk._id} booking = {bk} manageCheckinStatusChange={manageCheckinStatusChange} manageDelete={manageDelete}/>
         )
     })
 
