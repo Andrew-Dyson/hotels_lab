@@ -36,10 +36,8 @@ const HotelBox = () => {
         const revisedBookings = bookings.map(booking => {
             if (booking._id === id) {
                 booking.checkedIn = !booking.checkedIn
-                return booking
-            } else {
-                return booking
-            }
+            } 
+            return booking
         })
 
         console.log(revisedBookings)
